@@ -44,7 +44,7 @@ export default class Resources extends EventEmitter {
         this.video[asset.name].playsInline = true;
         this.video[asset.name].autoplay = true;
         this.video[asset.name].loop = true;
-        //this.video[asset.name].play();
+        this.video[asset.name].play();
 
         this.videoTexture[asset.name] = new THREE.VideoTexture(
           this.video[asset.name]

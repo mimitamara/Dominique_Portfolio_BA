@@ -14,7 +14,27 @@ export default class Room {
   }
 
   setModel() {
+    this.actualRoom.children.forEach((child) => {
+      child.castShadow = true;
+      child.receiveShadow = true;
+
+      if (child instanceof THREE.Group) {
+        child.children.forEach((groupchild) => {
+          groupchild.castShadow = true;
+          groupchild.receiveShadow = true;
+        });
+      }
+
+      if (this.actualRoom.name === "Tv") {
+        this.actualRoom.material = new THREE.MeshBasicMaterial({
+          map: this.resources.items.screen,
+        });
+      }
+    });
+
     this.scene.add(this.actualRoom);
+    this.actualRoom.scale.set(0.25, 0.25, 0.25);
+    //this.actualRoom.rotation.y = Math.PI;
   }
 
   resize() {}
